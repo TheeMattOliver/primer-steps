@@ -4,7 +4,7 @@
 
 <span>Steps component designed to work seamlessly with Github <a href="https://primer.style/" target="_blank">Primer React</a>.</span>
 
-<span>Inspired by Jean Verster's<a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>. All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
+<span>Inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>. All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
 <br />
 <br />
 
@@ -14,7 +14,9 @@
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue 'primer-steps npm downloads')](https://www.npmjs.com/package/primer-steps) -->
 
-![screenshot](https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif" alt="animated gif of steps component" />
+</p>
 
 ## Features
 
