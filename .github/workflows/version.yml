@@ -10,7 +10,7 @@ on:
       - "develop"
 defaults:
   run:
-    working-directory: chakra-ui-steps
+    working-directory: primer-steps
 jobs:
   version:
     runs-on: ubuntu-latest
