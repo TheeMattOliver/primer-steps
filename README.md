@@ -13,9 +13,9 @@
 [![npm - primer-steps](https://img.shields.io/npm/v/primer-steps "primer-steps npm")](https://www.npmjs.com/package/primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/min/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
-[![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue "primer-steps npm downloads")](https://www.npmjs.com/package/primer-steps)
+[![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue "primer-steps npm downloads")](https://www.npmjs.com/package/primer-steps) !-->
 
-![screenshot](https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif) -->
+![screenshot](https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif)
 
 ## Features
 
