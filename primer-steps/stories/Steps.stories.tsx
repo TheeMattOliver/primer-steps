@@ -11,7 +11,6 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
-import { darken, lighten } from '@chakra-ui/theme-tools';
 
 import {
   Box,
@@ -221,22 +220,61 @@ export const WithStates = (): JSX.Element => {
   });
 
   const [stepState, setStepState] = React.useState<StateValue>('loading');
-
+  const handleLoadingChange = () => {
+    setStepState('loading');
+  };
+  const handleErrorChange = () => {
+    setStepState('error');
+  };
   const { size } = useStepsContext();
 
   return (
     <>
-      <VStack width="100%" mb={8} align="flex-start">
-        <RadioGroup
-          defaultValue="loading"
-          onChange={(val) => setStepState(val as StateValue)}
+      <Box
+        as="div"
+        mb={8}
+        display="flex"
+        alignItems="flex-start"
+        flexDirection="column"
+      >
+        <Box
+          as="fieldset"
+          sx={{
+            border: '1px solid',
+            borderColor: 'border.default',
+            borderRadius: 1,
+            display: 'flex',
+            gap: '8px',
+          }}
         >
-          <HStack direction="row">
-            <Radio value="loading">Loading</Radio>
-            <Radio value="error">Error</Radio>
-          </HStack>
-        </RadioGroup>
-      </VStack>
+          <legend>State</legend>
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '4px',
+            }}
+          >
+            <input
+              type="radio"
+              id="loading"
+              name="loadingState"
+              value={stepState}
+              onChange={handleLoadingChange}
+              defaultChecked
+            />
+            <label htmlFor="loading">Loading</label>
+
+            <input
+              type="radio"
+              id="error"
+              name="loadingState"
+              value={stepState}
+              onChange={handleErrorChange}
+            />
+            <label htmlFor="error">Error</label>
+          </Box>
+        </Box>
+      </Box>
       <Steps size={size} state={stepState} activeStep={activeStep}>
         {steps.map(({ label }, index) => (
           <Step label={label} key={label}>
