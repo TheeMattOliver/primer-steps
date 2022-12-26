@@ -130,7 +130,6 @@ export const StepsExample = () => {
 | Prop                   | Type                 | Required | Description                                                                | Default    |
 | ---------------------- | -------------------- | -------- | -------------------------------------------------------------------------- | ---------- |
 | **`activeStep`**       | number               | yes      | Currently active step                                                      | 0          |
-| **`colorScheme`**      | string               | no       | Sets the color accent of the Steps component show                          | green      |
 | **`orientation`**      | string               | no       | Sets the orientation of the Steps component                                | horizontal |
 | **`responsive`**       | boolean              | no       | Sets whether the component auto switches to vertical orientation on mobile | true       |
 | **`checkIcon`**        | React.ComponentType  | no       | Allows you to provide a custom check icon                                  | undefined  |
