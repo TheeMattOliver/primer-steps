@@ -1,6 +1,6 @@
-// import { Collapse } from '@chakra-ui/transition';
-//
-import { Box, themeGet } from '@primer/react';
+// this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
+// it removes all chakra-ui dependencies and logic
+import { Box } from '@primer/react';
 import { AnimatePresence } from 'framer-motion';
 import React, { forwardRef } from 'react';
 

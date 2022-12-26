@@ -13,7 +13,7 @@
   "main": "./dist/primer-steps.umd.js",
   "module": "./dist/primer-steps.es.js",
   "types": "dist/index.d.ts",
-  "description": "Steps component designed to work seamlessly with Primer. Inspired by Jean Verster's Chakra UI Steps.",
+  "description": "Steps component inspired by Jean Verster's Chakra UI Steps, without the Chakra UI.",
   "files": [
     "dist"
   ],

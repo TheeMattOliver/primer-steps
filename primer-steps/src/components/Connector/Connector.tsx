@@ -1,3 +1,5 @@
+// this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
+// it removes all chakra-ui dependencies and logic
 import { Box, BoxProps, themeGet } from '@primer/react';
 import styled from 'styled-components';
 import { lighten, darken } from 'color2k';

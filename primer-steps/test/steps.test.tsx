@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Box } from '@primer/react';
 import * as React from 'react';
 import { describe, expect, it } from 'vitest';
 import { Step, Steps } from '../src';
@@ -11,7 +11,7 @@ import { render } from '../src/utils/test-utils';
 describe('<Steps />', () => {
   it('should render labels if present', async () => {
     const { getByText } = render(
-      <Steps colorScheme="green" activeStep={0}>
+      <Steps activeStep={0}>
         <Step label="Step 1" />
         <Step label="Step 2" />
         <Step label="Step 3" />
@@ -24,11 +24,11 @@ describe('<Steps />', () => {
 
   it('should render children', async () => {
     const { queryByTestId } = render(
-      <Steps colorScheme="green" orientation="vertical" activeStep={0}>
+      <Steps orientation="vertical" activeStep={0}>
         <Step label="Step 1">
-          <Flex data-testid="child-1">
+          <Box data-testid="child-1">
             <span>Child 1</span>
-          </Flex>
+          </Box>
         </Step>
       </Steps>
     );
@@ -40,16 +40,16 @@ describe('<Steps />', () => {
 
   it('should be able to control isCompletedStep for each step', async () => {
     const { container } = render(
-      <Steps colorScheme="green" orientation="vertical" activeStep={1}>
+      <Steps orientation="vertical" activeStep={1}>
         <Step isCompletedStep={false} label="Step 1">
-          <Flex data-testid="child-1">
+          <Box data-testid="child-1">
             <span>Child 1</span>
-          </Flex>
+          </Box>
         </Step>
         <Step isCompletedStep={true} label="Step 2">
-          <Flex data-testid="child-2">
+          <Box data-testid="child-2">
             <span>Child 2</span>
-          </Flex>
+          </Box>
         </Step>
       </Steps>
     );

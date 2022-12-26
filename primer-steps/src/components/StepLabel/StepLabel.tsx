@@ -1,3 +1,5 @@
+// this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
+// it removes all chakra-ui dependencies and logic
 import { Box } from '@primer/react';
 import React from 'react';
 import { useConfigContext } from '../../../.storybook/preview';

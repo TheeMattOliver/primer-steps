@@ -1,11 +1,10 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ThemeProvider } from '@primer/react';
 import {
   render as rtlRender,
   RenderOptions,
   RenderResult,
 } from '@testing-library/react';
 import * as React from 'react';
-import { StepsStyleConfig } from '../theme';
 
 /**
  * @vitest-environment jsdom
@@ -29,16 +28,10 @@ export const render = (
   ui: UI,
   { wrapper: Wrapper = ChildrenPassthrough, ...options }: TestOptions = {}
 ): RenderResult => {
-  const theme = extendTheme({
-    components: {
-      Steps: StepsStyleConfig,
-    },
-  });
-
   return rtlRender(
-    <ChakraProvider theme={theme}>
+    <ThemeProvider>
       <Wrapper>{ui}</Wrapper>
-    </ChakraProvider>,
+    </ThemeProvider>,
     options
   );
 };

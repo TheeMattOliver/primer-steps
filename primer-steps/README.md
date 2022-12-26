@@ -2,11 +2,11 @@
   primer-steps
 </h1>
 
-<span>Steps component designed to work seamlessly with <a href="https://chakra-ui.com/" target="_blank">Chakra UI</a>.</span> <span>An interactive demo along with code examples can be viewed <a href="https://jeanverster.github.io/primer-steps-site/" target="_blank">here</a>.</span>
+<span>Steps component designed to work with Github <a href="https://primer.style/react" target="_blank">Primer React</a>.</span> <span>An interactive demo along with code examples can be viewed <a href="https://jeanverster.github.io/primer-steps-site/" target="_blank">here</a>.</span>
 <br />
 <br />
 
-[![MIT License](https://badgen.net/github/license/jeanverster/primer-steps 'MIT License')](LICENSE.md)
+[![MIT License](https://badgen.net/github/license/theemattoliver/primer-steps/primer-steps 'MIT License')](LICENSE.md)
 [![npm - primer-steps](https://img.shields.io/npm/v/primer-steps 'primer-steps npm')](https://www.npmjs.com/package/primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/min/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
@@ -57,11 +57,11 @@ Then you can start using Primer Steps.
 
 ```jsx
 import { Step, Steps, useSteps } from 'primer-steps';
-
+import { Box } from '@primer/react';
 const content = (
-  <Flex py={4}>
+  <Box py={4}>
     <LoremIpsum p={1} />
-  </Flex>
+  </Box>
 );
 
 const steps = [
