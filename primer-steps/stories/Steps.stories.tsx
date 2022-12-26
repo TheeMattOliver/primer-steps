@@ -1,4 +1,4 @@
-import { useColorModeValue } from '@chakra-ui/color-mode';
+import React from 'react';
 import {
   Button,
   extendTheme,
@@ -12,48 +12,55 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { darken, lighten } from '@chakra-ui/theme-tools';
+
+import {
+  Box,
+  BoxProps,
+  Button as PrimerButton,
+  Text as PrimerText,
+  Heading as PrimerHeading,
+} from '@primer/react';
+
+import { useStepsContext } from '../src/context/';
+
 import { Meta, Story } from '@storybook/react';
 import { motion, MotionProps } from 'framer-motion';
-import React from 'react';
-import {
-  FiCheckCircle,
-  FiClipboard,
-  FiDollarSign,
-  FiUser,
-} from 'react-icons/fi';
-import { MdCheck } from 'react-icons/md';
+
+import { CheckCircle, Clipboard, DollarSign, User } from 'feather-icons-react';
+
 import { useConfigContext } from '../.storybook/preview';
-import { Step, Steps, StepsStyleConfig, useSteps } from '../src';
+import { Step, Steps, useSteps } from '../src';
 
-const meta: Meta = {
+export default {
   title: 'Steps',
-};
-
-export default meta;
+} as Meta;
 
 type ResetPromptProps = Omit<FlexProps, keyof MotionProps> & {
   onReset: () => void;
 };
 
-const MotionFlex = motion<FlexProps>(Flex);
+const MotionBox = motion<BoxProps>(Box);
 
 const ResetPrompt = ({ onReset, ...rest }: ResetPromptProps): JSX.Element => {
   return (
-    <MotionFlex
+    <MotionBox
       px={4}
       py={4}
       width="100%"
-      align="center"
-      justify="center"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
       flexDirection="column"
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
-      <Heading fontSize="xl">Woohoo! All steps completed!</Heading>
-      <Button mt={6} size="sm" onClick={onReset}>
+      <PrimerHeading sx={{ fontSize: 3 }}>
+        Woohoo! All steps completed!
+      </PrimerHeading>
+      <PrimerButton sx={{ mt: 6 }} size={`small`} onClick={onReset}>
         Reset
-      </Button>
-    </MotionFlex>
+      </PrimerButton>
+    </MotionBox>
   );
 };
 
@@ -73,20 +80,21 @@ const StepButtons = ({
   isLast,
 }: StepButtonsProps): JSX.Element => {
   return (
-    <Flex width="100%" justify="flex-end">
-      <Button
+    <Box display="flex" width="100%" justifyContent="flex-end">
+      <PrimerButton
         mr={4}
-        variant="ghost"
-        size="sm"
+        variant="invisible"
+        size="small"
         onClick={prevStep}
-        isDisabled={prevDisabled}
+        disabled={prevDisabled}
       >
         Prev
-      </Button>
-      <Button isDisabled={nextDisabled} size="sm" onClick={nextStep}>
+      </PrimerButton>
+
+      <PrimerButton isDisabled={nextDisabled} size="small" onClick={nextStep}>
         {isLast ? 'Finish' : 'Next'}
-      </Button>
-    </Flex>
+      </PrimerButton>
+    </Box>
   );
 };
 
@@ -95,19 +103,21 @@ type ContentProps = FlexProps & {
 };
 
 const Content = ({ index, ...rest }: ContentProps) => {
-  const bg = useColorModeValue('gray.200', 'gray.700');
   return (
-    <Flex
+    <Box
       p={6}
-      bg={bg}
-      rounded="md"
+      bg={`canvas.subtle`}
       width="100%"
-      align="center"
-      justify="center"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      sx={{
+        borderRadius: 2,
+      }}
       {...rest}
     >
       <Text>Step {index + 1}</Text>
-    </Flex>
+    </Box>
   );
 };
 
@@ -129,7 +139,7 @@ export const Horizontal = () => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
   return (
     <>
       <Steps size={size} activeStep={activeStep}>
@@ -155,7 +165,7 @@ export const Vertical = () => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
   return (
     <>
       <Steps size={size} orientation="vertical" activeStep={activeStep}>
@@ -181,7 +191,7 @@ export const WithDescription = () => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
   return (
     <>
       <Steps size={size} activeStep={activeStep}>
@@ -212,7 +222,7 @@ export const WithStates = (): JSX.Element => {
 
   const [stepState, setStepState] = React.useState<StateValue>('loading');
 
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
 
   return (
     <>
@@ -253,7 +263,7 @@ export const WithPerStepState = (): JSX.Element => {
     initialStep: 0,
   });
 
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
 
   return (
     <>
@@ -281,7 +291,7 @@ export const WithKeepErrorState = (): JSX.Element => {
     initialStep: 0,
   });
 
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
 
   return (
     <>
@@ -305,9 +315,9 @@ export const WithKeepErrorState = (): JSX.Element => {
 };
 
 const iconSteps = [
-  { label: 'Login', icon: FiUser },
-  { label: 'Verification', icon: FiClipboard },
-  { label: 'Pay', icon: FiDollarSign },
+  { label: 'Login', icon: User },
+  { label: 'Verification', icon: Clipboard },
+  { label: 'Pay', icon: DollarSign },
 ];
 
 export const CustomStepIcons = (): JSX.Element => {
@@ -315,7 +325,7 @@ export const CustomStepIcons = (): JSX.Element => {
     initialStep: 0,
   });
 
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
 
   return (
     <>
@@ -342,10 +352,10 @@ export const CustomCheckIcon = (): JSX.Element => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
   return (
     <>
-      <Steps size={size} checkIcon={FiCheckCircle} activeStep={activeStep}>
+      <Steps size={size} checkIcon={CheckCircle} activeStep={activeStep}>
         {steps.map(({ label }, index) => (
           <Step label={label} key={label}>
             <Content my={6} index={index} />
@@ -368,10 +378,10 @@ export const CustomPerStepCheckIcon = (): JSX.Element => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
   return (
     <>
-      <Steps size={size} checkIcon={FiCheckCircle} activeStep={activeStep}>
+      <Steps size={size} checkIcon={CheckCircle} activeStep={activeStep}>
         {iconSteps.map(({ label, icon }, index) => (
           <Step label={label} key={label} checkIcon={icon}>
             <Content my={6} index={index} />
@@ -390,92 +400,17 @@ export const CustomPerStepCheckIcon = (): JSX.Element => {
   );
 };
 
-export const CustomStyles: Story<{ theme: any }> = (): JSX.Element => {
-  const { nextStep, prevStep, reset, activeStep } = useSteps({
-    initialStep: 0,
-  });
-  const { size } = useConfigContext();
-  return (
-    <>
-      <Steps size={size} checkIcon={MdCheck} activeStep={activeStep}>
-        {iconSteps.map(({ label, icon }, index) => (
-          <Step label={label} key={label} icon={icon}>
-            <Content my={6} index={index} />
-          </Step>
-        ))}
-      </Steps>
-      {activeStep === 3 ? (
-        <ResetPrompt onReset={reset} />
-      ) : (
-        <StepButtons
-          {...{ nextStep, prevStep }}
-          prevDisabled={activeStep === 0}
-        />
-      )}
-    </>
-  );
-};
-
-const CustomSteps = {
-  ...StepsStyleConfig,
-  baseStyle: (props: any) => {
-    const inactiveColor = props.colorMode === 'light' ? 'gray.100' : 'gray.700';
-    const activeColor = `blue.500`;
-    return {
-      ...StepsStyleConfig.baseStyle(props),
-      connector: {
-        ...StepsStyleConfig.baseStyle(props).connector,
-        // this is the track color of the connector between steps
-        borderColor:
-          props.colorMode === 'light' ? 'blackAlpha.300' : 'whiteAlpha.500',
-        _highlighted: {
-          borderColor: activeColor,
-        },
-      },
-      stepIconContainer: {
-        ...StepsStyleConfig.baseStyle(props).stepIconContainer,
-        bg: inactiveColor,
-        borderColor: inactiveColor,
-        borderRadius: 'md',
-        _activeStep: {
-          bg:
-            props.colorMode === 'light'
-              ? darken(inactiveColor, 0.5)
-              : lighten(inactiveColor, 0.5),
-          borderColor: activeColor,
-        },
-        _highlighted: {
-          bg: activeColor,
-          borderColor: activeColor,
-        },
-        '&[data-clickable]:hover': {
-          borderColor: activeColor,
-        },
-      },
-    };
-  },
-};
-
-const theme = extendTheme({
-  components: {
-    Steps: CustomSteps,
-  },
-});
-
-CustomStyles.args = {
-  theme,
-};
-
 export const ClickableSteps: Story = (): JSX.Element => {
   const { nextStep, prevStep, reset, activeStep, setStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
+  console.log('size: ', size);
   return (
     <>
       <Steps
         size={size}
-        checkIcon={FiCheckCircle}
+        checkIcon={CheckCircle}
         activeStep={activeStep}
         onClickStep={(step) => setStep(step)}
       >
@@ -501,7 +436,7 @@ export const VerticalLabels: Story = (): JSX.Element => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   });
-  const { size } = useConfigContext();
+  const { size } = useStepsContext();
   return (
     <>
       <Steps size={size} labelOrientation="vertical" activeStep={activeStep}>

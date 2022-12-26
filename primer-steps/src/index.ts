@@ -1,7 +1,5 @@
-export { Step } from './components/Step';
-export { Steps } from './components/Steps';
+export { Step, Steps } from './components';
 export { useSteps } from './hooks/useSteps';
-export { StepsStyleConfig } from './theme';
 
-export type { StepProps } from './components/Step';
-export type { StepsProps } from './components/Steps';
+export type { StepProps } from './components';
+export type { StepsProps } from './components';

@@ -1,16 +1,16 @@
 <h1 style="font-weight: bold;">
-  chakra-ui-steps
+  primer-steps
 </h1>
 
-<span>Steps component designed to work seamlessly with <a href="https://chakra-ui.com/" target="_blank">Chakra UI</a>.</span> <span>An interactive demo along with code examples can be viewed <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">here</a>.</span>
+<span>Steps component designed to work seamlessly with <a href="https://chakra-ui.com/" target="_blank">Chakra UI</a>.</span> <span>An interactive demo along with code examples can be viewed <a href="https://jeanverster.github.io/primer-steps-site/" target="_blank">here</a>.</span>
 <br />
 <br />
 
-[![MIT License](https://badgen.net/github/license/jeanverster/chakra-ui-steps 'MIT License')](LICENSE.md)
-[![npm - chakra-ui-steps](https://img.shields.io/npm/v/chakra-ui-steps 'chakra-ui-steps npm')](https://www.npmjs.com/package/chakra-ui-steps)
-[![bundle size - chakra-ui-steps](https://badgen.net/bundlephobia/min/chakra-ui-steps)](https://bundlephobia.com/result?p=chakra-ui-steps)
-[![bundle size - chakra-ui-steps](https://badgen.net/bundlephobia/minzip/chakra-ui-steps)](https://bundlephobia.com/result?p=chakra-ui-steps)
-[![Total Downloads - chakra-ui-steps](https://badgen.net/npm/dt/chakra-ui-steps?color=blue 'chakra-ui-steps npm downloads')](https://www.npmjs.com/package/chakra-ui-steps)
+[![MIT License](https://badgen.net/github/license/jeanverster/primer-steps 'MIT License')](LICENSE.md)
+[![npm - primer-steps](https://img.shields.io/npm/v/primer-steps 'primer-steps npm')](https://www.npmjs.com/package/primer-steps)
+[![bundle size - primer-steps](https://badgen.net/bundlephobia/min/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
+[![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
+[![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue 'primer-steps npm downloads')](https://www.npmjs.com/package/primer-steps)
 
 ![screenshot](https://i.imgur.com/B9zbJEa.gif)
 
@@ -26,46 +26,37 @@
 Yarn:
 
 ```bash
-yarn add chakra-ui-steps
+yarn add primer-steps
 ```
 
 NPM:
 
 ```bash
-npm i chakra-ui-steps
+npm i primer-steps
 ```
 
 ## Usage
 
-> NOTE: This v1.4.0 of this component requires @chakra-ui/react >= v1.6.7 to work correctly. You can follow the installation instructions <a href="https://chakra-ui.com/docs/getting-started" target="_blank">here</a>. If you aren't able to update your chakra version you can still use v1.3.0
-
-In order to get started you will need to extend the default Chakra theme with the provided `StepsStyleConfig` object, like so:
+In order to get started you will need to use the Primer React `ThemeProvider` component, like so:
 
 ```jsx
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import { StepsStyleConfig as Steps } from 'chakra-ui-steps';
-
-const theme = extendTheme({
-  components: {
-    Steps,
-  },
-});
+import { ThemeProvider } from '@primer/react';
 
 export const App = () => {
   return (
-    <ChakraProvider theme={theme}>
+    <ThemeProvider>
       <YourApp />
-    </ChakraProvider>
+    </ThemeProvider>
   );
 };
 ```
 
-Once that's done you should be good to go!
+Then you can start using Primer Steps.
 
 ### Basic Example
 
 ```jsx
-import { Step, Steps, useSteps } from 'chakra-ui-steps';
+import { Step, Steps, useSteps } from 'primer-steps';
 
 const content = (
   <Flex py={4}>
@@ -120,52 +111,9 @@ export const StepsExample = () => {
 };
 ```
 
-### Custom Styles
-
-If you would like to customize the appearance of the Steps component you can do so using the multi part component styling approach as described <a href="https://chakra-ui.com/docs/styled-system/component-style#styling-multipart-components" target="_blank">here</a>. The parts available for styling are:
-
-```js
-connector;
-description;
-icon;
-iconLabel;
-label;
-labelContainer;
-step;
-stepContainer;
-stepIconContainer;
-steps;
-```
-
-The default styles for each part can be found <a href="https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/src/theme/index.ts" target="_blank">here</a>. Below is an example of how you might change the stroke width of the icons:
-
-```js
-import { StepsStyleConfig } from 'chakra-ui-steps';
-
-const CustomSteps = {
-  ...StepsStyleConfig,
-  baseStyle: props => {
-    return {
-      ...StepsStyleConfig.baseStyle(props),
-      icon: {
-        ...StepsStyleConfig.baseStyle(props).icon,
-        // your custom styles here
-        strokeWidth: '1px',
-      },
-    };
-  },
-};
-
-const theme = extendTheme({
-  components: {
-    Steps: CustomSteps,
-  },
-});
-```
-
 ## Props
 
-> Note: Both the `Step` and `Steps` component extend the Chakra UI `Box` component so they accept all the default styling props.
+> Note: Both the `Step` and `Steps` component extend the Primer `Box` component so they accept all the default styling props.
 
 ### `Steps`
 

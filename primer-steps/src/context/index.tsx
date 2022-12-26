@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { StepsProps } from '../components/Steps';
+
+export type StepSize = 'sm' | 'md' | 'lg';
 
 interface StepsContextValue extends StepsProps {
   stepContainerWidths?: number[];
@@ -11,6 +13,8 @@ interface StepsContextValue extends StepsProps {
   widths?: number[];
   setWidths?: React.Dispatch<React.SetStateAction<number[]>>;
   stepCount?: number;
+  stepSizes?: StepSize[];
+  setStepSizes?: Dispatch<SetStateAction<StepSize[]>>;
 }
 
 const StepsContext = React.createContext<StepsContextValue>({
@@ -24,6 +28,11 @@ export const StepsProvider: React.FC<{ value: StepsContextValue }> = ({
   children,
 }) => {
   const [widths, setWidths] = React.useState<number[]>([]);
+  const [stepSizes, setStepSizes] = React.useState<StepSize[]>([
+    'sm',
+    'md',
+    'lg',
+  ]);
 
   const isError = value.state === 'error';
   const isLoading = value.state === 'loading';
@@ -38,6 +47,8 @@ export const StepsProvider: React.FC<{ value: StepsContextValue }> = ({
         ...value,
         widths,
         setWidths,
+        stepSizes,
+        setStepSizes,
         isError,
         isLoading,
         isVertical,

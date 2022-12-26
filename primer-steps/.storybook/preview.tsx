@@ -1,18 +1,25 @@
 import {
-  Button,
-  ButtonGroup,
-  ChakraProvider,
-  extendTheme,
-  Flex,
-  IconButton,
-  useColorMode,
-  useColorModeValue,
-} from '@chakra-ui/react';
-import { StoryContext } from '@storybook/react';
-import React, { Dispatch, SetStateAction } from 'react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+  Box,
+  Button as PrimerButton,
+  IconButton as PrimerIconButton,
+  ButtonGroup as PrimerButtonGroup,
+  useColorSchemeVar,
+  useTheme,
+  ThemeProvider,
+  themeGet,
+  theme,
+  BaseStyles,
+} from '@primer/react';
+import { SunIcon, MoonIcon } from '@primer/octicons-react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { withPerformance } from 'storybook-addon-performance';
-import { StepsStyleConfig } from '../src/theme';
+
+import { GlobalStyle } from './story-helpers';
+
+type PrimerStoryContext = Record<string, unknown> & {
+  globals: { colorScheme: string };
+  parameters: Record<string, unknown>;
+};
 
 enum Sizes {
   sm = 'sm',
@@ -32,38 +39,41 @@ const ConfigContext = React.createContext<Partial<ConfigContextType>>({
 export const useConfigContext = () => React.useContext(ConfigContext);
 
 const ToggleBar = () => {
-  const { toggleColorMode } = useColorMode();
-  const SwitchIcon = useColorModeValue(FaMoon, FaSun);
-  const nextMode = useColorModeValue('dark', 'light');
-  const bg = useColorModeValue('gray.200', 'gray.700');
-  const activeBg = useColorModeValue('teal.300', 'teal.600');
+  const { colorMode, colorScheme, setColorMode, setDayScheme, setNightScheme } =
+    useTheme();
   const { size, setSize } = useConfigContext();
 
   return (
-    <Flex justify="flex-end" mb={4}>
-      <ButtonGroup mr={4} isAttached>
-        {Object.values(Sizes).map((val) => (
-          <Button
-            size="sm"
-            key={val}
-            onClick={() => setSize?.(val)}
-            bg={size === val ? activeBg : bg}
-          >
-            {val}
-          </Button>
-        ))}
-      </ButtonGroup>
-      <IconButton
-        size="sm"
-        fontSize="lg"
-        marginLeft="2"
-        variant="ghost"
-        color="current"
-        icon={<SwitchIcon />}
-        onClick={toggleColorMode}
-        aria-label={`Switch to ${nextMode} mode`}
+    <Box display="flex" justifyContent="flex-end" alignItems="center" mb={4}>
+      <PrimerButtonGroup sx={{ mr: 4 }}>
+        {Object.values(Sizes).map((val) => {
+          return (
+            <PrimerButton
+              size="small"
+              key={val}
+              onClick={() => setSize?.(val)}
+              sx={{
+                backgroundColor:
+                  size === val ? `accent.subtle` : `canvas.subtle`,
+                ':hover:not([disabled])': {
+                  backgroundColor: size === val ? `accent.subtle` : ``,
+                },
+              }}
+            >
+              {val}
+            </PrimerButton>
+          );
+        })}
+      </PrimerButtonGroup>
+
+      <PrimerIconButton
+        aria-label={`Switch to ${colorMode === 'day' ? 'night' : 'day'} mode`}
+        icon={colorMode === 'night' ? SunIcon : MoonIcon}
+        variant={`invisible`}
+        onClick={() => setColorMode(colorMode === 'day' ? 'night' : 'day')}
+        sx={{ ml: 2 }}
       />
-    </Flex>
+    </Box>
   );
 };
 
@@ -76,18 +86,23 @@ const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const withChakra = (StoryFn: Function, context: StoryContext) => {
-  const theme = context?.args?.theme
-    ? context?.args.theme
-    : extendTheme({ components: { Steps: StepsStyleConfig } });
+const withPrimer = (
+  Story: React.FC<React.PropsWithChildren<PrimerStoryContext>>,
+  context: PrimerStoryContext
+) => {
+  const { colorScheme } = context.globals;
+
   return (
-    <ChakraProvider theme={theme}>
+    <ThemeProvider colorMode="day" dayScheme={colorScheme}>
       <ConfigProvider>
-        <ToggleBar />
-        <StoryFn />
+        <GlobalStyle />
+        <BaseStyles>
+          <ToggleBar />
+          <div id="html-addon-root">{Story(context)}</div>
+        </BaseStyles>
       </ConfigProvider>
-    </ChakraProvider>
+    </ThemeProvider>
   );
 };
 
-export const decorators = [withChakra, withPerformance];
+export const decorators = [withPrimer, withPerformance];

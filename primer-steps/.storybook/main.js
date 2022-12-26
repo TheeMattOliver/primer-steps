@@ -8,7 +8,7 @@ module.exports = {
   // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
   typescript: {
     check: true, // type-check stories during Storybook build
-    reactDocgen: 'none',
+    reactDocgen: 'react-docgen-typescript',
   },
   webpackFinal: async (config) => {
     config.module.rules.push({
@@ -30,7 +30,6 @@ module.exports = {
   },
   babel: async (options) => ({
     ...options,
-
     plugins: [
       '@babel/plugin-proposal-class-properties',
       '@babel/plugin-proposal-private-methods',
