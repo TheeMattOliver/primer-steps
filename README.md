@@ -2,22 +2,25 @@
   primer-steps
 </h1>
 
-<span>Steps component designed to work with Github <a href="https://primer.style/react" target="_blank">Primer React</a>.</span> <span>An interactive demo along with code examples can be viewed <a href="https://jeanverster.github.io/primer-steps-site/" target="_blank">here</a>.</span>
-<br />
-<br />
+<span>Steps component designed to work seamlessly with <a href="https://primer.style/" target="_blank">Github Primer</a>.</span>
 
-[![MIT License](https://badgen.net/github/license/theemattoliver/primer-steps/primer-steps "MIT License")](LICENSE.md)
+<span>Inspired by Jean Verster's<a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>. All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
+
+<br />
+<br />
+<!-- 
+[![MIT License](https://badgen.net/github/license/theemattoliver/primer-steps "MIT License")](LICENSE.md)
 [![npm - primer-steps](https://img.shields.io/npm/v/primer-steps "primer-steps npm")](https://www.npmjs.com/package/primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/min/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue "primer-steps npm downloads")](https://www.npmjs.com/package/primer-steps)
 
-![screenshot](https://i.imgur.com/B9zbJEa.gif)
+![screenshot](https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif) -->
 
 ## Features
 
 - Multiple orientations
-- Easily render step content
+- Render step content
 - Custom icons
 - Size variants
 
@@ -37,10 +40,16 @@ npm i primer-steps
 
 ## Usage
 
-In order to get started you will need to use the Primer React `ThemeProvider` component, like so:
+In order to get started, import the Primer React ThemeProvider:
 
 ```jsx
 import { ThemeProvider } from "@primer/react";
+
+const theme = extendTheme({
+  components: {
+    Steps,
+  },
+});
 
 export const App = () => {
   return (
@@ -51,15 +60,13 @@ export const App = () => {
 };
 ```
 
-Then you can start using Primer Steps.
-
 ### Basic Example
 
 ```jsx
 import { Step, Steps, useSteps } from "primer-steps";
-import { Box } from "@primer/react";
+
 const content = (
-  <Box py={4}>
+  <Box sx={{ display: "flex" }} py={4}>
     <LoremIpsum p={1} />
   </Box>
 );
@@ -76,7 +83,7 @@ export const StepsExample = () => {
   });
 
   return (
-    <Flex flexDir="column" width="100%">
+    <Box display="flex" flexDirection="column" width="100%">
       <Steps activeStep={activeStep}>
         {steps.map(({ label, content }) => (
           <Step label={label} key={label}>
@@ -85,28 +92,28 @@ export const StepsExample = () => {
         ))}
       </Steps>
       {activeStep === steps.length ? (
-        <Flex p={4}>
+        <Box p={4}>
           <Button mx="auto" size="sm" onClick={reset}>
             Reset
           </Button>
-        </Flex>
+        </Box>
       ) : (
-        <Flex width="100%" justify="flex-end">
+        <Box width="100%" justify="flex-end">
           <Button
             isDisabled={activeStep === 0}
             mr={4}
             onClick={prevStep}
-            size="sm"
-            variant="ghost"
+            size="small"
+            variant="invisible"
           >
             Prev
           </Button>
           <Button size="sm" onClick={nextStep}>
             {activeStep === steps.length - 1 ? "Finish" : "Next"}
           </Button>
-        </Flex>
+        </Box>
       )}
-    </Flex>
+    </Box>
   );
 };
 ```
@@ -117,21 +124,25 @@ export const StepsExample = () => {
 
 ### `Steps`
 
-| Prop                   | Type                | Required | Description                                                                | Default    |
-| ---------------------- | ------------------- | -------- | -------------------------------------------------------------------------- | ---------- |
-| **`activeStep`**       | number              | yes      | Currently active step                                                      | 0          |
-| **`colorScheme`**      | string              | no       | Sets the color accent of the Steps component show                          | green      |
-| **`orientation`**      | string              | no       | Sets the orientation of the Steps component                                | horizontal |
-| **`responsive`**       | boolean             | no       | Sets whether the component auto switches to vertical orientation on mobile | true       |
-| **`checkIcon`**        | React.ComponentType | no       | Allows you to provide a custom check icon                                  | undefined  |
-| **`onClickStep`**      | () => void          | no       | If defined, allows you to click on the step icons                          | undefined  |
-| **`labelOrientation`** | string              | no       | Switch between horizontal and vertical label orientation                   | undefined  |
+| Prop                   | Type                 | Required | Description                                                                | Default    |
+| ---------------------- | -------------------- | -------- | -------------------------------------------------------------------------- | ---------- |
+| **`activeStep`**       | number               | yes      | Currently active step                                                      | 0          |
+| **`colorScheme`**      | string               | no       | Sets the color accent of the Steps component show                          | green      |
+| **`orientation`**      | string               | no       | Sets the orientation of the Steps component                                | horizontal |
+| **`responsive`**       | boolean              | no       | Sets whether the component auto switches to vertical orientation on mobile | true       |
+| **`checkIcon`**        | React.ComponentType  | no       | Allows you to provide a custom check icon                                  | undefined  |
+| **`onClickStep`**      | () => void           | no       | If defined, allows you to click on the step icons                          | undefined  |
+| **`labelOrientation`** | string               | no       | Switch between horizontal and vertical label orientation                   | undefined  |
+| **`state`**            | 'loading' \| 'error' | no       | Let's you set the state to error or loading                                | undefined  |
 
 ### `Step`
 
-| Prop                  | Type                | Required | Description                                                          | Default   |
-| --------------------- | ------------------- | -------- | -------------------------------------------------------------------- | --------- |
-| **`label`**           | string              | no       | Sets the title of the step                                           | ''        |
-| **`description`**     | string              | no       | Provides extra info about the step                                   | ''        |
-| **`icon`**            | React.ComponentType | no       | Custom icon to overwrite the default numerical indicator of the step | undefined |
-| **`isCompletedStep`** | boolean             | no       | Individually control each step state, defaults to active step        | undefined |
+| Prop                  | Type                 | Required | Description                                                                                       | Default   |
+| --------------------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------- | --------- |
+| **`label`**           | string               | no       | Sets the title of the step                                                                        | ''        |
+| **`description`**     | string               | no       | Provides extra info about the step                                                                | ''        |
+| **`icon`**            | React.ComponentType  | no       | Custom icon to overwrite the default numerical indicator of the step                              | undefined |
+| **`isCompletedStep`** | boolean              | no       | Individually control each step state, defaults to active step                                     | undefined |
+| **`isKeepError`**     | boolean              | no       | Individually control if each step should keep showing the error state                             | undefined |
+| **`checkIcon`**       | React.ComponentType  | no       | Allows you to provide a custom check icon that will override the one provided to Steps            | undefined |
+| **`state`**           | 'loading' \| 'error' | no       | Let's you set the state in a specific Step, if defined it will override the one provided to Steps | undefined |

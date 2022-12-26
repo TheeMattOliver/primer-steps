@@ -2,17 +2,19 @@
   primer-steps
 </h1>
 
-<span>Steps component designed to work with Github <a href="https://primer.style/react" target="_blank">Primer React</a>.</span> <span>An interactive demo along with code examples can be viewed <a href="https://jeanverster.github.io/primer-steps-site/" target="_blank">here</a>.</span>
+<span>Steps component designed to work seamlessly with Github <a href="https://primer.style/" target="_blank">Primer React</a>.</span>
+
+<span>Inspired by Jean Verster's<a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>. All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
 <br />
 <br />
 
-[![MIT License](https://badgen.net/github/license/theemattoliver/primer-steps/primer-steps 'MIT License')](LICENSE.md)
+<!-- [![MIT License](https://badgen.net/github/license/theemattoliver/primer-steps/primer-steps 'MIT License')](LICENSE.md)
 [![npm - primer-steps](https://img.shields.io/npm/v/primer-steps 'primer-steps npm')](https://www.npmjs.com/package/primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/min/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
-[![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue 'primer-steps npm downloads')](https://www.npmjs.com/package/primer-steps)
+[![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue 'primer-steps npm downloads')](https://www.npmjs.com/package/primer-steps) -->
 
-![screenshot](https://i.imgur.com/B9zbJEa.gif)
+![screenshot](https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif)
 
 ## Features
 
