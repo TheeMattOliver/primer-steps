@@ -19,6 +19,7 @@
 <p align="center">
   <img src="https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif" alt="animated gif of steps component" />
 </p>
+
 ## Features
 
 - Multiple orientations
