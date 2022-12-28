@@ -107,3 +107,4 @@ const StepIcon = forwardRef(({ ...props }: StepIconProps, ref) => {
   }, [isCompletedStep, isCurrentStep, isError, isLoading, Icon]);
 });
 export default StepIcon;
+StepIcon.displayName = 'StepIcon';

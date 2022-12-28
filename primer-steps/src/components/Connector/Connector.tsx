@@ -1,5 +1,5 @@
 // this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
-// it removes all chakra-ui dependencies and logic
+// it removes all chakra-ui dependencies, components, hooks, and chakra-specific theming logic
 import { Box, BoxProps, themeGet } from '@primer/react';
 import styled from 'styled-components';
 import { lighten, darken } from 'color2k';
@@ -25,35 +25,36 @@ const Connector = React.memo(
     hasLabel,
     size = 'md',
   }: ConnectorProps) => {
-    // const { connector, stepIconContainer } = useStyles();
     const { isVertical, isLabelVertical, widths, stepSizes } =
       useStepsContext();
 
-    const stepIconContainerStyles = {
-      display: 'flex',
-      borderRadius: '50%',
-      alignItems: 'center',
-      justifyContent: 'center',
-      bg: 'bg.neutral.muted',
-      borderColor: 'border.muted',
-      transitionProperty: 'background, border-color',
-      transitionDuration: 'normal',
-      _activeStep: {
-        bg: 'bg.neutral.muted',
-        borderColor: 'fg.default',
-        _invalid: {
-          bg: 'danger.subtle',
-          borderColor: 'danger.emphasis',
-        },
-      },
-      _highlighted: {
-        bg: 'bg.neutral.muted',
-        borderColor: 'border.default',
-      },
-      '&[data-clickable]:hover': {
-        borderColor: 'border.default',
-      },
-    };
+    console.log('isVertical? ', isVertical);
+
+    // const stepIconContainerStyles = {
+    //   display: 'flex',
+    //   borderRadius: '50%',
+    //   alignItems: 'center',
+    //   justifyContent: 'center',
+    //   bg: 'bg.neutral.muted',
+    //   borderColor: 'border.muted',
+    //   transitionProperty: 'background, border-color',
+    //   transitionDuration: 'normal',
+    //   _activeStep: {
+    //     bg: 'bg.neutral.muted',
+    //     borderColor: 'fg.default',
+    //     _invalid: {
+    //       bg: 'danger.subtle',
+    //       borderColor: 'danger.emphasis',
+    //     },
+    //   },
+    //   _highlighted: {
+    //     bg: 'bg.neutral.muted',
+    //     borderColor: 'border.default',
+    //   },
+    //   '&[data-clickable]:hover': {
+    //     borderColor: 'border.default',
+    //   },
+    // };
 
     const stepIconContainerSizes = {
       sm: {
@@ -89,6 +90,9 @@ const Connector = React.memo(
         borderTopWidth: isLastStep || isVertical ? 0 : '2px',
         borderInlineStartWidth: isLastStep || !isVertical ? 0 : '2px',
         minHeight: isLastStep || !isVertical ? 'auto' : '1.5rem',
+        borderLeftWidth: isLastStep || !isVertical ? 0 : '2px',
+        borderLeftStyle: isVertical ? 'solid' : 'revert',
+        marginLeft: isVertical ? '18px' : 'revert',
       };
 
       if (!isVertical) {
@@ -136,3 +140,4 @@ const Connector = React.memo(
 );
 
 export default Connector;
+Connector.displayName = 'Connector';

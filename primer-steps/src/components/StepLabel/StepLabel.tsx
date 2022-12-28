@@ -75,3 +75,4 @@ const StepLabel = ({
 };
 
 export default StepLabel;
+StepLabel.displayName = 'StepLabel';

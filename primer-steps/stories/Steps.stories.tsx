@@ -115,7 +115,7 @@ const Content = ({ index, ...rest }: ContentProps) => {
       }}
       {...rest}
     >
-      <Text>Step {index + 1}</Text>
+      <PrimerText>Step {index + 1}</PrimerText>
     </Box>
   );
 };

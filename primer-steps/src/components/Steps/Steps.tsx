@@ -147,3 +147,4 @@ Steps.defaultProps = {
   responsive: true,
 };
 export default Steps;
+Steps.displayName = 'Steps';

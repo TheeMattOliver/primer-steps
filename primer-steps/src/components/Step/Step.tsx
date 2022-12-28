@@ -159,6 +159,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
             ...stepContainerStyles,
           }}
         >
+          {/* step container */}
           <Box
             as="div"
             sx={{
@@ -264,7 +265,10 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
           hasLabel={!!label || !!description}
           isCompletedStep={isCompletedStep || false}
         >
-          <Collapse style={{ width: '100%' }} in={isCurrentStep}>
+          <Collapse
+            style={{ width: '100%', marginLeft: '16px' }}
+            in={isCurrentStep}
+          >
             {(isCurrentStep || isCompletedStep) && children}
           </Collapse>
         </Connector>
@@ -273,3 +277,4 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
   );
 });
 export default Step;
+Step.displayName = 'Step';
