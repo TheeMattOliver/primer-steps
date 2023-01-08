@@ -1,0 +1,36 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+// this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
+// it removes all chakra-ui dependencies and logic
+import { Box } from '@primer/react';
+import { useConfigContext } from '../../../.storybook/preview';
+import { useStepsContext } from '../../context/index';
+const StepLabel = ({ isCurrentStep, opacity, label, description, }) => {
+    const { isLabelVertical } = useStepsContext();
+    const shouldRender = !!label || !!description;
+    const { size } = useConfigContext();
+    return shouldRender ? (_jsxs(Box, { as: "div", "aria-current": isCurrentStep ? 'step' : undefined, sx: {
+            textAlign: isLabelVertical ? 'center' : 'left',
+            alignItems: isLabelVertical ? 'center' : 'flex-start',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+        }, children: [!!label && (_jsx(Box, { as: "span", sx: {
+                    mx: isLabelVertical ? 0 : 2,
+                    mt: isLabelVertical ? 1 : 0,
+                    opacity,
+                    color: 'fg.default',
+                    fontWeight: 'medium',
+                    textAlign: 'center',
+                    fontSize: size === 'sm' ? 1 : size === 'md' ? 2 : size === 'lg' ? 3 : 2,
+                }, children: label })), !!description && (_jsx(Box, { as: "span", sx: {
+                    mx: isLabelVertical ? 0 : 2,
+                    mt: isLabelVertical ? 2 : 0,
+                    opacity,
+                    color: 'fg.muted',
+                    marginTop: '-2px',
+                    textAlign: 'center',
+                    fontSize: size === 'sm' ? 0 : size === 'md' ? 1 : size === 'lg' ? 2 : 2,
+                }, children: description }))] })) : null;
+};
+export default StepLabel;
+StepLabel.displayName = 'StepLabel';

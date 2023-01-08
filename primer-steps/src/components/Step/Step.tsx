@@ -47,6 +47,8 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     ...styleProps
   } = props as FullStepProps;
 
+  console.log('size: ', size);
+
   const {
     isVertical,
     isError,
@@ -88,22 +90,21 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     '&[data-clickable]:hover': {
       borderColor: 'bg.success',
     },
-    width:
-      size === 'sm'
-        ? '32px'
-        : size === 'md'
-        ? '40px'
-        : size === 'lg'
-        ? '48px'
-        : '32px',
-    height:
-      size === 'sm'
-        ? '32px'
-        : size === 'md'
-        ? '40px'
-        : size === 'lg'
-        ? '48px'
-        : '32px',
+    sm: {
+      width: '32px',
+      height: '32px',
+      borderWidth: '2px',
+    },
+    md: {
+      width: '40px',
+      height: '40px',
+      borderWidth: '2px',
+    },
+    lg: {
+      width: '48px',
+      height: '48px',
+      borderWidth: '2px',
+    },
   };
 
   const hasVisited = isCurrentStep || isCompletedStep;
@@ -127,7 +128,10 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
         });
       }
     },
-    [stepIconContainerStyles.width, stepIconContainerStyles.height]
+    [
+      stepIconContainerStyles[size!].height,
+      stepIconContainerStyles[size!].width,
+    ]
   );
 
   return (

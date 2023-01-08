@@ -8,7 +8,10 @@
     "csstype": "3.0.10"
   },
   "scripts": {
-    "storybook": "cd primer-steps && yarn storybook"
+    "storybook": "cd primer-steps && yarn storybook",
+    "dev": "cd website && yarn dev",
+    "build": "cd primer-steps && yarn build",
+    "test": "cd primer-steps && yarn test"
   },
   "workspaces": [
     "primer-steps",

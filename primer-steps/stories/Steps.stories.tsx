@@ -1,16 +1,4 @@
 import React from 'react';
-import {
-  Button,
-  extendTheme,
-  Flex,
-  FlexProps,
-  Heading,
-  HStack,
-  Radio,
-  RadioGroup,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
 
 import {
   Box,
@@ -34,7 +22,7 @@ export default {
   title: 'Steps',
 } as Meta;
 
-type ResetPromptProps = Omit<FlexProps, keyof MotionProps> & {
+type ResetPromptProps = Omit<BoxProps, keyof MotionProps> & {
   onReset: () => void;
 };
 
@@ -97,7 +85,7 @@ const StepButtons = ({
   );
 };
 
-type ContentProps = FlexProps & {
+type ContentProps = BoxProps & {
   index: number;
 };
 

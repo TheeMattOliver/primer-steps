@@ -1,7 +1,7 @@
 // this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
 // it removes all chakra-ui dependencies and logic
 import { motion } from 'framer-motion';
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useImperativeHandle } from 'react';
 
 import { Box, Spinner } from '@primer/react';
 import { XIcon, CheckIcon } from '@primer/octicons-react';
@@ -29,14 +29,13 @@ const animationConfig = {
   initial: { scale: 0.5, opacity: 0 },
   animate: { scale: 1, opacity: 1 },
 };
-
+/**
+ * Icon passed into the step. <span>
+ */
 const StepIcon = forwardRef(({ ...props }: StepIconProps, ref) => {
-  const labelStyles = {
-    fontWeight: 'medium',
-    textAlign: 'center',
-    fontSize: 'sm',
-    color: 'fg.onEmphasis',
-  };
+  const internalRef = React.useRef<HTMLElement | SVGElement>(null);
+  // use the ref internally, wire it to forwarded ref
+  useImperativeHandle(ref, () => internalRef.current);
 
   const {
     isCompletedStep,
@@ -48,6 +47,13 @@ const StepIcon = forwardRef(({ ...props }: StepIconProps, ref) => {
     index,
     checkIcon: CustomCheckIcon,
   } = props;
+
+  const labelStyles = {
+    fontWeight: 'semibold',
+    textAlign: 'center',
+    fontSize: 1,
+    color: isCompletedStep ? 'fg.onEmphasis' : 'fg.default',
+  };
 
   const Icon = React.useMemo(
     () => (CustomIcon ? CustomIcon : null),
@@ -100,9 +106,14 @@ const StepIcon = forwardRef(({ ...props }: StepIconProps, ref) => {
         </MotionBox>
       );
     return (
-      <AnimatedSpan ref={ref} key="label" sx={labelStyles} {...animationConfig}>
+      <MotionBox
+        ref={internalRef}
+        key="label"
+        sx={labelStyles}
+        {...animationConfig}
+      >
         {(index || 0) + 1}
-      </AnimatedSpan>
+      </MotionBox>
     );
   }, [isCompletedStep, isCurrentStep, isError, isLoading, Icon]);
 });

@@ -1,11 +1,9 @@
 // this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
 // it removes all chakra-ui dependencies, components, hooks, and chakra-specific theming logic
-import { Box, BoxProps, themeGet } from '@primer/react';
-import styled from 'styled-components';
-import { lighten, darken } from 'color2k';
+import { Box, BoxProps } from '@primer/react';
 import * as React from 'react';
 
-import { StepSize, useStepsContext } from '../../context';
+import { useStepsContext } from '../../context';
 import { dataAttr } from '../../utils';
 
 interface ConnectorProps extends BoxProps {
@@ -27,8 +25,6 @@ const Connector = React.memo(
   }: ConnectorProps) => {
     const { isVertical, isLabelVertical, widths, stepSizes } =
       useStepsContext();
-
-    console.log('isVertical? ', isVertical);
 
     // const stepIconContainerStyles = {
     //   display: 'flex',

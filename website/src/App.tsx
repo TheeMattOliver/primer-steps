@@ -1,8 +1,8 @@
-import { Button, Flex } from "@chakra-ui/react";
-import { Step, Steps, useSteps } from "chakra-ui-steps";
+import { Button, Box } from "@primer/react";
+import { Step, Steps, useSteps } from "primer-steps";
 import { useState } from "react";
 import "./App.css";
-const content = <Flex py={4}>Yo!</Flex>;
+const content = <Box py={4}>Yo!</Box>;
 
 const steps = [
   { label: "Step 1", content },
@@ -25,26 +25,26 @@ function App() {
         ))}
       </Steps>
       {activeStep === steps.length ? (
-        <Flex p={4}>
-          <Button mx="auto" size="sm" onClick={reset}>
+        <Box p={4}>
+          <Button mx="auto" size="small" onClick={reset}>
             Reset
           </Button>
-        </Flex>
+        </Box>
       ) : (
-        <Flex width="100%" justify="flex-end">
+        <Box width="100%" display="flex" justifyContent="flex-end">
           <Button
             isDisabled={activeStep === 0}
             mr={4}
             onClick={prevStep}
-            size="sm"
-            variant="ghost"
+            size="small"
+            variant="invisible"
           >
             Prev
           </Button>
-          <Button size="sm" onClick={nextStep}>
+          <Button size="small" onClick={nextStep}>
             {activeStep === steps.length - 1 ? "Finish" : "Next"}
           </Button>
-        </Flex>
+        </Box>
       )}
     </>
   );

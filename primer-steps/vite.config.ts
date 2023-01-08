@@ -16,13 +16,9 @@ export default defineConfig({
         globals: {
           react: 'react',
           'framer-motion': 'framer-motion',
-          '@chakra-ui/system': '@chakra-ui/system',
-          '@chakra-ui/theme-tools': '@chakra-ui/theme-tools',
-          '@chakra-ui/utils': '@chakra-ui/utils',
-          '@chakra-ui/icon': '@chakra-ui/icon',
           'react/jsx-runtime': 'react/jsx-runtime',
-          '@chakra-ui/react': '@chakra-ui/react',
-          '@chakra-ui/transition': '@chakra-ui/transition',
+          '@primer/react': '@primer/react',
+          '@primer/octicons-react': '@primer/octicons-react',
         },
       },
       plugins: [

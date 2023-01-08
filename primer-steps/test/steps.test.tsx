@@ -1,4 +1,3 @@
-import { Box } from '@primer/react';
 import * as React from 'react';
 import { describe, expect, it } from 'vitest';
 import { Step, Steps } from '../src';
@@ -26,9 +25,9 @@ describe('<Steps />', () => {
     const { queryByTestId } = render(
       <Steps orientation="vertical" activeStep={0}>
         <Step label="Step 1">
-          <Box data-testid="child-1">
+          <div data-testid="child-1">
             <span>Child 1</span>
-          </Box>
+          </div>
         </Step>
       </Steps>
     );
@@ -42,14 +41,14 @@ describe('<Steps />', () => {
     const { container } = render(
       <Steps orientation="vertical" activeStep={1}>
         <Step isCompletedStep={false} label="Step 1">
-          <Box data-testid="child-1">
+          <div data-testid="child-1">
             <span>Child 1</span>
-          </Box>
+          </div>
         </Step>
         <Step isCompletedStep={true} label="Step 2">
-          <Box data-testid="child-2">
+          <div data-testid="child-2">
             <span>Child 2</span>
-          </Box>
+          </div>
         </Step>
       </Steps>
     );
