@@ -1,7 +1,7 @@
 {
   "version": "0.0.1",
   "license": "MIT",
-  "name": "primer-steps",
+  "name": "@primer-steps/primer-steps",
   "author": "Matt Oliver",
   "keywords": [
     "steps",
