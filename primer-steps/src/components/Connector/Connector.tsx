@@ -8,6 +8,7 @@ import { dataAttr } from '../../utils';
 
 interface ConnectorProps extends BoxProps {
   isCompletedStep: boolean;
+  isKeepError?: boolean;
   isLastStep?: boolean;
   hasLabel?: boolean;
   index: number;
@@ -21,6 +22,7 @@ const Connector = React.memo(
     children,
     isLastStep,
     hasLabel,
+    isKeepError,
     size = 'md',
   }: ConnectorProps) => {
     const { isVertical, isLabelVertical, widths, stepSizes } =
@@ -117,10 +119,16 @@ const Connector = React.memo(
       stepIconContainerSizes[size].height,
       stepIconContainerSizes[size].width,
     ]);
+
     return (
       <Box
         sx={{
-          borderColor: isCompletedStep ? 'success.fg' : 'border.subtle',
+          borderColor:
+            isCompletedStep && !isKeepError
+              ? 'success.fg'
+              : isCompletedStep && isKeepError
+              ? 'danger.emphasis'
+              : 'border.subtle',
           flex: 1,
           display: 'flex',
           transitionProperty: 'border-color',
