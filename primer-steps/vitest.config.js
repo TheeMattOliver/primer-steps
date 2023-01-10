@@ -8,12 +8,6 @@ export default defineConfig({
   //   },
   // },
   test: {
-    exclude: [
-      ...configDefaults.exclude,
-      '../node_modules/@primer/react/lib-esm',
-      '../node_modules/@primer/react/lib-esm/index.js',
-      'src/components/Connector/Connector.tsx',
-      '../node_modules/@primer/react/lib-esm/PageLayout/useStickyPaneHeight.js',
-    ],
+    exclude: ['../node_modules/@primer/react'],
   },
 });
