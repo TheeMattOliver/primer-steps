@@ -139,12 +139,12 @@ export const StepsExample = () => {
 
 ### `Step`
 
-| Prop                  | Type                 | Required | Description                                                                                       | Default   |
-| --------------------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------- | --------- |
-| **`label`**           | string               | no       | Sets the title of the step                                                                        | ''        |
-| **`description`**     | string               | no       | Provides extra info about the step                                                                | ''        |
-| **`icon`**            | React.ComponentType  | no       | Custom icon to overwrite the default numerical indicator of the step                              | undefined |
-| **`isCompletedStep`** | boolean              | no       | Individually control each step state, defaults to active step                                     | undefined |
-| **`isKeepError`**     | boolean              | no       | Individually control if each step should keep showing the error state                             | undefined |
-| **`checkIcon`**       | React.ComponentType  | no       | Allows you to provide a custom check icon that will override the one provided to Steps            | undefined |
-| **`state`**           | 'loading' \| 'error' | no       | Let's you set the state in a specific Step, if defined it will override the one provided to Steps | undefined |
+| Prop                  | Type                 | Required | Description                                                                                      | Default   |
+| --------------------- | -------------------- | -------- | ------------------------------------------------------------------------------------------------ | --------- |
+| **`label`**           | string               | no       | Sets the title of the step                                                                       | ''        |
+| **`description`**     | string               | no       | Provides extra info about the step                                                               | ''        |
+| **`icon`**            | React.ComponentType  | no       | Custom icon to overwrite the default numerical indicator of the step                             | undefined |
+| **`isCompletedStep`** | boolean              | no       | Individually control each step state, defaults to active step                                    | undefined |
+| **`isKeepError`**     | boolean              | no       | Individually control if each step should keep showing the error state                            | undefined |
+| **`checkIcon`**       | React.ComponentType  | no       | Allows you to provide a custom check icon that will override the one provided to Steps           | undefined |
+| **`state`**           | 'loading' \| 'error' | no       | Lets you set the state in a specific Step, if defined it will override the one provided to Steps | undefined |
