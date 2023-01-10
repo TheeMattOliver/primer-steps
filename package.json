@@ -11,10 +11,14 @@
     "storybook": "cd primer-steps && yarn storybook",
     "dev": "cd website && yarn dev",
     "build": "cd primer-steps && yarn build",
-    "test": "cd primer-steps && yarn test"
+    "test": "cd primer-steps && yarn test",
+    "release": "cd primer-steps && yarn release"
   },
   "workspaces": [
     "primer-steps",
     "website"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/cli": "^2.26.0"
+  }
 }
