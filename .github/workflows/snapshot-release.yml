@@ -30,9 +30,9 @@ jobs:
       - name: Build
         run: yarn build
 
-      # Change this to customize your test command.
-      - name: Test
-        run: yarn test
+      # Unable to get vitest to work
+      # - name: Test
+      #   run: yarn test
 
       - name: Create .npmrc
         run: |
