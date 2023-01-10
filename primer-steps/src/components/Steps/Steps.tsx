@@ -1,6 +1,7 @@
 // this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
 // it removes all chakra-ui dependencies and logic
-import React, { forwardRef } from 'react';
+
+import React, { forwardRef, useImperativeHandle } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 import { Box, BoxProps } from '@primer/react';
@@ -97,6 +98,7 @@ const Steps = forwardRef(
         >
           <OrderedList
             as="ol"
+            // @ts-ignore
             ref={ref}
             className={classnames('primer-steps', className)}
             orientation={orientation}

@@ -58,7 +58,6 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     setWidths,
     stepCount,
   } = useStepsContext();
-
   const stepContainerStyles = {
     display: 'flex',
     alignItems: 'center',
@@ -88,22 +87,21 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     '&[data-clickable]:hover': {
       borderColor: 'bg.success',
     },
-    width:
-      size === 'sm'
-        ? '32px'
-        : size === 'md'
-        ? '40px'
-        : size === 'lg'
-        ? '48px'
-        : '32px',
-    height:
-      size === 'sm'
-        ? '32px'
-        : size === 'md'
-        ? '40px'
-        : size === 'lg'
-        ? '48px'
-        : '32px',
+    sm: {
+      width: '32px',
+      height: '32px',
+      borderWidth: '2px',
+    },
+    md: {
+      width: '40px',
+      height: '40px',
+      borderWidth: '2px',
+    },
+    lg: {
+      width: '48px',
+      height: '48px',
+      borderWidth: '2px',
+    },
   };
 
   const hasVisited = isCurrentStep || isCompletedStep;
@@ -127,7 +125,10 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
         });
       }
     },
-    [stepIconContainerStyles.width, stepIconContainerStyles.height]
+    [
+      stepIconContainerStyles[size!].height,
+      stepIconContainerStyles[size!].width,
+    ]
   );
 
   return (
@@ -174,16 +175,21 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
                   ? 'fg.onEmphasis'
                   : isCurrentStep && isKeepError
                   ? 'fg.onEmphasis'
+                  : isCompletedStep
+                  ? 'fg.onEmphasis'
                   : 'revert',
-              bg: isCompletedStep
-                ? 'success.emphasis'
-                : isCurrentStep && isError
-                ? 'danger.emphasis'
-                : isCurrentStep && isKeepError
-                ? 'danger.emphasis'
-                : isCurrentStep && isKeepError
-                ? 'danger.emphasis'
-                : 'neutral.muted',
+              bg:
+                isCompletedStep && !isKeepError
+                  ? 'success.emphasis'
+                  : isCurrentStep && isError
+                  ? 'danger.emphasis'
+                  : isCurrentStep && isKeepError
+                  ? 'danger.emphasis'
+                  : isCurrentStep && isKeepError
+                  ? 'danger.emphasis'
+                  : isCompletedStep && isKeepError
+                  ? 'danger.emphasis'
+                  : 'neutral.muted',
               borderColor:
                 isCurrentStep && isError
                   ? 'danger.emphasis'
@@ -191,7 +197,9 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
                   ? 'danger.emphasis'
                   : isCurrentStep
                   ? 'success.fg'
-                  : isCompletedStep
+                  : isCompletedStep && !isKeepError
+                  ? 'success.emphasis'
+                  : isCompletedStep && !isKeepError
                   ? 'success.emphasis'
                   : 'border.muted',
               transitionProperty: 'background, border-color',
@@ -262,6 +270,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
         <Connector
           index={index}
           isLastStep={isLastStep}
+          isKeepError={isKeepError || false}
           hasLabel={!!label || !!description}
           isCompletedStep={isCompletedStep || false}
         >

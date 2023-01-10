@@ -1,15 +1,14 @@
 // this project was heavily inspired by https://github.com/jeanverster/chakra-ui-steps, MIT https://github.com/jeanverster/chakra-ui-steps/blob/main/chakra-ui-steps/LICENSE
 // it removes all chakra-ui dependencies, components, hooks, and chakra-specific theming logic
-import { Box, BoxProps, themeGet } from '@primer/react';
-import styled from 'styled-components';
-import { lighten, darken } from 'color2k';
+import { Box, BoxProps } from '@primer/react';
 import * as React from 'react';
 
-import { StepSize, useStepsContext } from '../../context';
+import { useStepsContext } from '../../context';
 import { dataAttr } from '../../utils';
 
 interface ConnectorProps extends BoxProps {
   isCompletedStep: boolean;
+  isKeepError?: boolean;
   isLastStep?: boolean;
   hasLabel?: boolean;
   index: number;
@@ -23,12 +22,11 @@ const Connector = React.memo(
     children,
     isLastStep,
     hasLabel,
+    isKeepError,
     size = 'md',
   }: ConnectorProps) => {
     const { isVertical, isLabelVertical, widths, stepSizes } =
       useStepsContext();
-
-    console.log('isVertical? ', isVertical);
 
     // const stepIconContainerStyles = {
     //   display: 'flex',
@@ -121,10 +119,16 @@ const Connector = React.memo(
       stepIconContainerSizes[size].height,
       stepIconContainerSizes[size].width,
     ]);
+
     return (
       <Box
         sx={{
-          borderColor: isCompletedStep ? 'success.fg' : 'border.subtle',
+          borderColor:
+            isCompletedStep && !isKeepError
+              ? 'success.fg'
+              : isCompletedStep && isKeepError
+              ? 'danger.emphasis'
+              : 'border.subtle',
           flex: 1,
           display: 'flex',
           transitionProperty: 'border-color',

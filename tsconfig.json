@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "chakra-ui-steps" }, { "path": "website" }]
+  "references": [{ "path": "website" }]
 }

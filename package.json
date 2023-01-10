@@ -2,16 +2,23 @@
   "name": "primer-steps",
   "author": "Matt Oliver",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.1",
   "main": "index.js",
   "resolutions": {
     "csstype": "3.0.10"
   },
   "scripts": {
-    "storybook": "cd primer-steps && yarn storybook"
+    "storybook": "cd primer-steps && yarn storybook",
+    "dev": "cd website && yarn dev",
+    "build": "cd primer-steps && yarn build",
+    "test": "cd primer-steps && yarn test",
+    "release": "cd primer-steps && yarn release"
   },
   "workspaces": [
     "primer-steps",
     "website"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/cli": "^2.26.0"
+  }
 }

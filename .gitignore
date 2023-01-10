@@ -25,3 +25,4 @@ website/.next
 *.sw?
 
 .yarn
+.env
