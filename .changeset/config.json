@@ -3,7 +3,7 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "linked": [],
+  "linked": [["@primer-steps/primer-steps", "website"]],
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
