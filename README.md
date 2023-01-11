@@ -2,9 +2,11 @@
   primer-steps
 </h1>
 
-<span>Steps component designed to work seamlessly with <a href="https://primer.style/" target="_blank">Github Primer</a>.</span>
+<span>Steps component designed to work seamlessly with <a href="https://primer.style/" target="_blank">Github Primer</a>, because why not.</span>
 
-<span>Inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>. All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
+<span>Inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>.</span>
+
+<span>All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
 
 <br />
 <br />
@@ -15,7 +17,6 @@
 [![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
 [![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue "primer-steps npm downloads")](https://www.npmjs.com/package/primer-steps) !-->
 
-<!-- ![screenshot](https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif) -->
 <p align="center">
   <img src="https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif" alt="animated gif of steps component" />
 </p>
@@ -32,13 +33,13 @@
 Yarn:
 
 ```bash
-yarn add primer-steps
+yarn add @primer-steps/primer-steps
 ```
 
 NPM:
 
 ```bash
-npm i primer-steps
+npm i @primer-steps/primer-steps
 ```
 
 ## Usage
