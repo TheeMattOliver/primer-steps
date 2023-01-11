@@ -85,5 +85,8 @@
     "lodash.mergewith": "^4.6.2",
     "styled-components": "^5.3.6",
     "@types/styled-components": "^5.1.26"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
