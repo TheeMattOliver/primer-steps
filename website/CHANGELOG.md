@@ -1,5 +1,11 @@
 # website
 
+## 0.0.4
+
+### Patch Changes
+
+- 21088c6: bump for changeset init
+
 ## 0.0.2
 
 ### Patch Changes
