@@ -1,15 +1,15 @@
-import { ThemeProvider } from "@primer/react";
-// import "@fontsource/manrope/400.css";
-// import "@fontsource/manrope/700.css";
-// import "@fontsource/sora/400.css";
-// import "@fontsource/sora/700.css";
+import { ThemeProvider, BaseStyles } from "@primer/react";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { GlobalStyle } from "./GlobalStyle";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
+      <GlobalStyle />
+      <BaseStyles />
       <App />
     </ThemeProvider>
   </React.StrictMode>,

@@ -1,7 +1,7 @@
 import { Button, Box } from "@primer/react";
 import { Step, Steps, useSteps } from "@primer-steps/primer-steps";
 import { useState } from "react";
-import "./App.css";
+
 const content = <Box py={4}>Yo!</Box>;
 
 const steps = [

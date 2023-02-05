@@ -41,9 +41,7 @@ const ResetPrompt = ({ onReset, ...rest }: ResetPromptProps): JSX.Element => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
-      <PrimerHeading sx={{ fontSize: 3 }}>
-        Woohoo! All steps completed!
-      </PrimerHeading>
+      <PrimerHeading sx={{ fontSize: 3 }}>All steps completed!</PrimerHeading>
       <PrimerButton sx={{ mt: 6 }} size={`small`} onClick={onReset}>
         Reset
       </PrimerButton>
