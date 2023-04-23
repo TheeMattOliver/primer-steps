@@ -12,7 +12,6 @@ import {
 } from '@primer/react';
 import { SunIcon, MoonIcon } from '@primer/octicons-react';
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { withPerformance } from 'storybook-addon-performance';
 
 import { GlobalStyle } from './story-helpers';
 
@@ -105,4 +104,4 @@ const withPrimer = (
   );
 };
 
-export const decorators = [withPrimer, withPerformance];
+export const decorators = [withPrimer];
