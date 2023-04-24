@@ -18,7 +18,7 @@ export interface StepProps {
   isKeepError?: boolean;
   children?: React.ReactNode;
   size?: 'sm' | 'md' | 'lg';
-  collapseOnComplete?: boolean;
+  uncollapsed?: boolean;
 }
 
 // Private props
@@ -45,7 +45,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     isKeepError,
     label,
     size,
-    collapseOnComplete = true,
+    uncollapsed = false,
     ...styleProps
   } = props as FullStepProps;
 
@@ -276,7 +276,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
           hasLabel={!!label || !!description}
           isCompletedStep={isCompletedStep || false}
         >
-          {collapseOnComplete ? (
+          {!uncollapsed ? (
             <Collapse
               style={{ width: '100%', marginLeft: '16px' }}
               in={isCurrentStep}
@@ -285,7 +285,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
             </Collapse>
           ) : (
             <Collapse in style={{ width: '100%', marginLeft: '16px' }}>
-              {(isCurrentStep || isCompletedStep) && children}
+              {children}
             </Collapse>
           )}
         </Connector>

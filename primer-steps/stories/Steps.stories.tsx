@@ -494,7 +494,7 @@ export const Uncollapsed = () => {
     <>
       <Steps size={size} orientation="vertical" activeStep={activeStep}>
         {steps.map(({ label }, index) => (
-          <Step label={label} key={label} collapseOnComplete={false}>
+          <Step label={label} key={label} uncollapsed>
             <Content index={index} />
           </Step>
         ))}
