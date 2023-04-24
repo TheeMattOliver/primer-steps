@@ -484,3 +484,29 @@ export const VerticalLabels: Story = (): JSX.Element => {
     </>
   );
 };
+
+export const Uncollapsed = () => {
+  const { nextStep, prevStep, reset, activeStep } = useSteps({
+    initialStep: 0,
+  });
+  const { size } = useStepsContext();
+  return (
+    <>
+      <Steps size={size} orientation="vertical" activeStep={activeStep}>
+        {steps.map(({ label }, index) => (
+          <Step label={label} key={label} collapseOnComplete={false}>
+            <Content index={index} />
+          </Step>
+        ))}
+      </Steps>
+      {activeStep === 3 ? (
+        <ResetPrompt onReset={reset} />
+      ) : (
+        <StepButtons
+          {...{ nextStep, prevStep }}
+          prevDisabled={activeStep === 0}
+        />
+      )}
+    </>
+  );
+};
