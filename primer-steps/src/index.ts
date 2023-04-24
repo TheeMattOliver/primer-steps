@@ -6,6 +6,8 @@ export {
   Connector,
   useConfigContext,
   useStepsContext,
+  ConfigProvider,
+  StepsProvider,
 } from './components';
 
 export { useSteps } from './hooks/useSteps';
