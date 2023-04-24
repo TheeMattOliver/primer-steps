@@ -2,10 +2,11 @@
 // it removes all chakra-ui dependencies and logic
 import { Box } from '@primer/react';
 import React from 'react';
-import { useConfigContext } from '../../../.storybook/preview';
+// import { useConfigContext } from '../../../.storybook/preview';
 import { useStepsContext } from '../../context/index';
+import { useConfigContext } from '../../components';
 
-interface StepLabelProps {
+export interface StepLabelProps {
   isCurrentStep?: boolean;
   opacity: number;
   label?: string | React.ReactNode;

@@ -7,7 +7,9 @@ import classnames from 'classnames';
 import { Box, BoxProps } from '@primer/react';
 import { useMediaQuery } from '../../hooks';
 import { StepsProvider } from '../../context/index';
-import { useConfigContext } from '../../../.storybook/preview';
+// import { useConfigContext } from '../../../.storybook/preview';
+
+import { ConfigProvider, useConfigContext } from '../../components';
 
 export interface StepsProps extends BoxProps {
   /**

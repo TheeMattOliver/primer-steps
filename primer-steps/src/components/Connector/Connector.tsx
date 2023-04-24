@@ -6,7 +6,7 @@ import * as React from 'react';
 import { useStepsContext } from '../../context';
 import { dataAttr } from '../../utils';
 
-interface ConnectorProps extends BoxProps {
+export interface ConnectorProps extends BoxProps {
   isCompletedStep: boolean;
   isKeepError?: boolean;
   isLastStep?: boolean;
