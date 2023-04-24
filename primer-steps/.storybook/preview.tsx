@@ -12,7 +12,6 @@ import {
 } from '@primer/react';
 import { SunIcon, MoonIcon } from '@primer/octicons-react';
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { withPerformance } from 'storybook-addon-performance';
 
 import { GlobalStyle } from './story-helpers';
 
@@ -21,22 +20,33 @@ type PrimerStoryContext = Record<string, unknown> & {
   parameters: Record<string, unknown>;
 };
 
-enum Sizes {
-  sm = 'sm',
-  md = 'md',
-  lg = 'lg',
-}
+// enum Sizes {
+//   sm = 'sm',
+//   md = 'md',
+//   lg = 'lg',
+// }
 
-type ConfigContextType = {
-  size: Sizes;
-  setSize: Dispatch<SetStateAction<Sizes>>;
-};
+// type ConfigContextType = {
+//   size: Sizes;
+//   setSize: Dispatch<SetStateAction<Sizes>>;
+// };
 
-const ConfigContext = React.createContext<Partial<ConfigContextType>>({
-  size: Sizes.md,
-});
+// const ConfigContext = React.createContext<Partial<ConfigContextType>>({
+//   size: Sizes.md,
+// });
 
-export const useConfigContext = () => React.useContext(ConfigContext);
+// export const useConfigContext = () => React.useContext(ConfigContext);
+
+// const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
+//   const [size, setSize] = React.useState<Sizes>(Sizes.md);
+//   return (
+//     <ConfigContext.Provider value={{ size, setSize }}>
+//       {children}
+//     </ConfigContext.Provider>
+//   );
+// };
+
+import { useConfigContext, Sizes, ConfigProvider } from '../src/components';
 
 const ToggleBar = () => {
   const { colorMode, colorScheme, setColorMode, setDayScheme, setNightScheme } =
@@ -77,15 +87,6 @@ const ToggleBar = () => {
   );
 };
 
-const ConfigProvider = ({ children }: { children: React.ReactNode }) => {
-  const [size, setSize] = React.useState<Sizes>(Sizes.md);
-  return (
-    <ConfigContext.Provider value={{ size, setSize }}>
-      {children}
-    </ConfigContext.Provider>
-  );
-};
-
 const withPrimer = (
   Story: React.FC<React.PropsWithChildren<PrimerStoryContext>>,
   context: PrimerStoryContext
@@ -105,4 +106,4 @@ const withPrimer = (
   );
 };
 
-export const decorators = [withPrimer, withPerformance];
+export const decorators = [withPrimer];

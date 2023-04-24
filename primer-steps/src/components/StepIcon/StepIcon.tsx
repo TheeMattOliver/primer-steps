@@ -6,7 +6,7 @@ import React, { forwardRef, useImperativeHandle } from 'react';
 import { Box, Spinner } from '@primer/react';
 import { XIcon, CheckIcon } from '@primer/octicons-react';
 
-interface StepIconProps {
+export interface StepIconProps {
   isCompletedStep?: boolean;
   isCurrentStep?: boolean;
   isError?: boolean;

@@ -1,5 +1,21 @@
-export { Step, Steps } from './components';
+export {
+  Step,
+  Steps,
+  StepIcon,
+  StepLabel,
+  Connector,
+  useConfigContext,
+  useStepsContext,
+  ConfigProvider,
+  StepsProvider,
+} from './components';
+
 export { useSteps } from './hooks/useSteps';
 
-export type { StepProps } from './components';
-export type { StepsProps } from './components';
+export type {
+  StepProps,
+  StepsProps,
+  StepLabelProps,
+  StepIconProps,
+  ConnectorProps,
+} from './components';

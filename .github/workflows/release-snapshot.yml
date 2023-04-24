@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: CI
+name: Release snapshot
 on:
   push:
     branches-ignore:
