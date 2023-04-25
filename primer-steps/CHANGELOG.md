@@ -1,5 +1,12 @@
 # @primer-steps/primer-steps
 
+## 0.0.6
+
+### Patch Changes
+
+- 08a1340: improves collapse props options
+- dd9102a: add uncollapsed prop
+
 ## 0.0.5
 
 ### Patch Changes
