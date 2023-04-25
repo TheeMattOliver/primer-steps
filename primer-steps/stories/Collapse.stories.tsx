@@ -57,8 +57,14 @@ export const WithoutOpacityTransition = () => (
 );
 
 export const WithInitialIn = () => (
-  <Collapse>
-    <div>
+  <Collapse in>
+    <div
+      style={{
+        background: 'red',
+        padding: 30,
+        marginTop: 8,
+      }}
+    >
       Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       Lorem Ipsum has been the industry's standard dummy text ever since the
       1500s, when an unknown printer took a galley of type and scrambled it to
