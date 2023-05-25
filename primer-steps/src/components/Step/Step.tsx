@@ -60,6 +60,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     setWidths,
     stepCount,
   } = useStepsContext();
+
   const stepContainerStyles = {
     display: 'flex',
     alignItems: 'center',
@@ -285,7 +286,18 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
             </Collapse>
           ) : (
             <Collapse in style={{ width: '100%', marginLeft: '16px' }}>
-              {children}
+              {React.Children.map(children, (child, idx) => {
+                if (!child) {
+                  return null;
+                }
+                return (
+                  <div key={idx}>
+                    {ref
+                      ? React.cloneElement(child as JSX.Element, { ref })
+                      : child}
+                  </div>
+                );
+              })}
             </Collapse>
           )}
         </Connector>
