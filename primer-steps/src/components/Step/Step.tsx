@@ -282,7 +282,22 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
               style={{ width: '100%', marginLeft: '16px' }}
               in={isCurrentStep}
             >
-              {(isCurrentStep || isCompletedStep) && children}
+              {(isCurrentStep || isCompletedStep) && (
+                <>
+                  {React.Children.map(children, (child, idx) => {
+                    if (!child) {
+                      return null;
+                    }
+                    return (
+                      <div key={idx}>
+                        {ref
+                          ? React.cloneElement(child as JSX.Element, { ref })
+                          : child}
+                      </div>
+                    );
+                  })}
+                </>
+              )}
             </Collapse>
           ) : (
             <Collapse in style={{ width: '100%', marginLeft: '16px' }}>
