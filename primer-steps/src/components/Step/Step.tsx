@@ -276,44 +276,17 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
           isKeepError={isKeepError || false}
           hasLabel={!!label || !!description}
           isCompletedStep={isCompletedStep || false}
-          {...props}
         >
           {!uncollapsed ? (
             <Collapse
               style={{ width: '100%', marginLeft: '16px' }}
               in={isCurrentStep}
             >
-              {(isCurrentStep || isCompletedStep) && (
-                <>
-                  {React.Children.map(children, (child, idx) => {
-                    if (!child) {
-                      return null;
-                    }
-                    return (
-                      <div key={idx}>
-                        {ref
-                          ? React.cloneElement(child as JSX.Element, { ref })
-                          : child}
-                      </div>
-                    );
-                  })}
-                </>
-              )}
+              {(isCurrentStep || isCompletedStep) && children}
             </Collapse>
           ) : (
             <Collapse in style={{ width: '100%', marginLeft: '16px' }}>
-              {React.Children.map(children, (child, idx) => {
-                if (!child) {
-                  return null;
-                }
-                return (
-                  <div key={idx}>
-                    {ref
-                      ? React.cloneElement(child as JSX.Element, { ref })
-                      : child}
-                  </div>
-                );
-              })}
+              {children}
             </Collapse>
           )}
         </Connector>
