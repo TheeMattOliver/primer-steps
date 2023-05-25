@@ -276,6 +276,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
           isKeepError={isKeepError || false}
           hasLabel={!!label || !!description}
           isCompletedStep={isCompletedStep || false}
+          {...props}
         >
           {!uncollapsed ? (
             <Collapse
