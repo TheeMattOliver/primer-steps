@@ -2,20 +2,17 @@
   primer-steps
 </h1>
 
-<span>Steps component designed to work seamlessly with <a href="https://primer.style/" target="_blank">Github Primer</a>, because why not.</span>
-
-<span>Inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>.</span>
-
-<span>All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
+<span>Just for fun.</span>
 
 <br />
 <br />
-<!-- 
-[![MIT License](https://badgen.net/github/license/theemattoliver/primer-steps "MIT License")](LICENSE.md)
-[![npm - primer-steps](https://img.shields.io/npm/v/primer-steps "primer-steps npm")](https://www.npmjs.com/package/primer-steps)
-[![bundle size - primer-steps](https://badgen.net/bundlephobia/min/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
-[![bundle size - primer-steps](https://badgen.net/bundlephobia/minzip/primer-steps)](https://bundlephobia.com/result?p=primer-steps)
-[![Total Downloads - primer-steps](https://badgen.net/npm/dt/primer-steps?color=blue "primer-steps npm downloads")](https://www.npmjs.com/package/primer-steps) !-->
+
+<span>Steps component inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a> with all Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
+
+<br />
+<br />
+
+<span>For visual design, I applied <a href="https://primer.style/" target="_blank">Github Primer</a> but any design system could be used to apply to this interaction pattern.</span>
 
 <p align="center">
   <img src="https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif" alt="animated gif of steps component" />

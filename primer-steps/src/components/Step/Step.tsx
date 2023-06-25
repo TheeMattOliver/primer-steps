@@ -60,6 +60,7 @@ const Step = forwardRef(({ ...props }: StepProps, ref: React.Ref<any>) => {
     setWidths,
     stepCount,
   } = useStepsContext();
+
   const stepContainerStyles = {
     display: 'flex',
     alignItems: 'center',
