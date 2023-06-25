@@ -1,5 +1,11 @@
 # @primer-steps/primer-steps
 
+## 0.0.7
+
+### Patch Changes
+
+- 2b4c30e: adds a useImperative method to children in uncollapsed step
+
 ## 0.0.6
 
 ### Patch Changes
