@@ -47,7 +47,14 @@ type PrimerStoryContext = Record<string, unknown> & {
 // };
 
 import { useConfigContext, Sizes, ConfigProvider } from '../src/components';
-
+export const parameters = {
+  options: {
+    storySort: {
+      method: 'alphabetical',
+      order: ['About this project', 'Collapse', 'Steps'],
+    },
+  },
+};
 const ToggleBar = () => {
   const { colorMode, colorScheme, setColorMode, setDayScheme, setNightScheme } =
     useTheme();
