@@ -7,12 +7,12 @@
 <br />
 <br />
 
-<span>Steps component inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a> with all Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
+<span>Inspired by Jean Verster's <a href="https://jeanverster.github.io/chakra-ui-steps-site/" target="_blank">Chakra UI Steps</a>. All Chakra dependencies, Chakra components, and Chakra-dependent logic removed.</span>
 
 <br />
 <br />
 
-<span>For visual design, I applied <a href="https://primer.style/" target="_blank">Github Primer</a> but any design system could be used to apply to this interaction pattern.</span>
+<span><a href="https://primer.style/" target="_blank">Github Primer</a> is applied but any design system could be used to apply to this interaction pattern.</span>
 
 <p align="center">
   <img src="https://media.giphy.com/media/ud039lZ0ITbpenJxXo/giphy.gif" alt="animated gif of steps component" />
@@ -41,7 +41,7 @@ npm i @primer-steps/primer-steps
 
 ## Usage
 
-In order to get started, import the Primer React ThemeProvider:
+Import the Primer React ThemeProvider:
 
 ```jsx
 import { ThemeProvider } from "@primer/react";
